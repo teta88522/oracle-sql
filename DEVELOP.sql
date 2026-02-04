@@ -73,4 +73,25 @@ from sangpum),
 :name, :price,:explan,default,:made,to_date(:date1,'RRRR-MM-DD'));
 
 
+-- merge into table
+-- using table2 
+-- on 병합조건
+-- when matched then
+-- update ...
+-- when not matched then
+-- insert ...
+merge into sangpum s1
+using (select 'S014' scode,
+'돈까스' sname, 5000 price,'아주마이음' explan,3 score,'asd' MADE from sangpum) s2 
+on (s1.scode = s2.scode)
+when matched then
+update set
+s1.sname = s2.sname,
+s1.price = s2.price,
+s1.explan = s2.explan
+when not matched then
+    insert (scode,sname,price,explan,made)
+    values(s2.scode,s2.sname,s2.price,s2.explan,s2.made);
+
+
 
