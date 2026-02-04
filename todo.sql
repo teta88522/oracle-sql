@@ -40,6 +40,11 @@ WHERE deptno = 30;
  --                                 4~6 => 1/4 분기
   --                                7~9 => 1/4 분기
     --                              10~12 => 1/4 분기
+SELECT name,
+to_char(birthday,'Q') || '/4분기' "quarter",
+ceil(to_char(birthday,'MM') / 3) || '/4분기' "quarter2"
+,birthday
+FROM student;
     
     
     
