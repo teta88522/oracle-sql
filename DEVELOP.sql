@@ -93,5 +93,21 @@ when not matched then
     insert (scode,sname,price,explan,made)
     values(s2.scode,s2.sname,s2.price,s2.explan,s2.made);
 
+SELECT *
+FROM board;
 
+INSERT INTO board(board_no,title,writer,content)
+values(1,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(2,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(3,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(4,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(5,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(6,'test1','user01','asd');
+INSERT INTO board(board_no,title,writer,content)
+values(7,'test1','user01','asd');
 
