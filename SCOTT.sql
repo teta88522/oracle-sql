@@ -118,3 +118,52 @@ WHERE name LIKE 'M________%';
 SELECT *
 FROM student
 WHERE jumin LIKE '%10_________';
+
+-- 5일차 테이블 만들기
+
+CREATE TABLE Users(
+    user_id varchar2(30) constraint users_user_id_pk PRIMARY KEY,
+    password varchar2(100) constraint users_password_no NOT NULL,
+    user_name varchar2(50) constraint users_user_name_nn NOT NULL,
+    create_at date DEFAULT SYSDATE
+);
+
+--responsibility 컬럼 add.
+alter table users add responsibility  varchar2(5); -- ADMIN User 
+
+alter table users 
+add constraint users_resp_ck check (responsibility in ('Users','Admin));
+
+drop table users;
+
+insert into users
+values ('user01','1234','홍길동',sysdate);
+insert into users
+values ('user02','1234','홍익인간',sysdate);
+insert into users
+values ('user03','1234','홍익인간',sysdate);
+
+SELECT * FROM users;
+
+select * from board;
+
+insert into board (board_no,title,content,writer)
+values(5,'외래키등록','외래키 테스트','user03');
+
+
+
+select *
+from emp
+order by 1 desc;
+
+select * from dept;
+
+update emp
+set deptno = 50
+where empno = 7935;
+
+-- board 테이블 안 writer 컬럼 -> Foreign key 
+-- users 테이블에 user_id 컬럼 -> reference key
+ALTER TABLE board ADD 
+CONSTRAINT board_users_id_fk FOREIGN KEY(writer) 
+REFERENCES users(user_id);
